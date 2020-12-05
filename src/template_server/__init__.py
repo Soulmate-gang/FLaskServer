@@ -25,8 +25,8 @@ def create_app(test_config=None):
     from . import models
     models.init_app(app)
 
-    from . import home
-    home.init_app(app)
+    from . import route
+    route.init_app(app)
 
     return app
 

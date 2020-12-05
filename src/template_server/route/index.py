@@ -6,4 +6,5 @@ from . import bp
 @bp.route('/index', methods=['GET'])
 def index():
     """ index """
-    return jsonify({})
+    data = {"content": "ths is index"}
+    return jsonify(data)
