@@ -1,6 +1,6 @@
 from flask import jsonify
 
-from template_server.route import bp
+from flask_server.route import bp
 
 
 @bp.route('/index', methods=['GET'])

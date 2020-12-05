@@ -1,6 +1,6 @@
 from passlib.context import CryptContext
 
-from template_server.models import db
+from flask_server.models import db
 
 password_context = CryptContext(
     schemes=["pbkdf2_sha256", ],

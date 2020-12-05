@@ -45,7 +45,7 @@ class GenerateConfig(NoOptionsCommand):
 
 
 setup(
-    name='template_server',
+    name='flask_server',
     version='1.0',
     packages=find_packages('src', exclude=['tests']),
     package_dir={'': 'src'},

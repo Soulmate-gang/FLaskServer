@@ -1,6 +1,6 @@
 from flask import Flask
 
-from template_server import config
+from flask_server import config
 
 
 def create_app(test_config=None):
@@ -23,10 +23,10 @@ def create_app(test_config=None):
     else:
         flask_app.config.from_pyfile('config.py', silent=True)
 
-    from template_server import models
+    from flask_server import models
     models.init_app(flask_app)
 
-    from template_server import route
+    from flask_server import route
     route.init_app(flask_app)
 
     return flask_app
