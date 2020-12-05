@@ -1,8 +1,6 @@
-"""https://www.jianshu.com/p/5282a7525e52  多对多设计"""
-
 from passlib.context import CryptContext
 
-from . import db
+from template_server.models import db
 
 password_context = CryptContext(
     schemes=["pbkdf2_sha256", ],

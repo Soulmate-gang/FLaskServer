@@ -1,6 +1,6 @@
-import os
-from pathlib import Path
 import itertools
+from pathlib import Path
+
 from setuptools import setup, Command, find_packages
 
 BASE_DIR = Path('.')
@@ -20,8 +20,8 @@ class NoOptionsCommand(Command):
 class D2U(NoOptionsCommand):
     description = R"文档换行符转换，\r\n to \r."
 
-    def dos2unix(self, infile, outfile):
-        content = ''
+    @classmethod
+    def dos2unix(cls, infile, outfile):
         with open(infile, 'rb') as f:
             content = f.read()
         with open(outfile, 'wb') as f:
@@ -30,12 +30,12 @@ class D2U(NoOptionsCommand):
 
     def run(self):
         """ 搜索并转换为unix换行符 """
-        exts = ['*.yaml', '*.md', '*.sh']
-        for pth in itertools.chain(*(BASE_DIR.rglob(ext) for ext in exts)):
+        extends = ['*.yaml', '*.md', '*.sh']
+        for pth in itertools.chain(*(BASE_DIR.rglob(ext) for ext in extends)):
             self.dos2unix(pth, pth)
 
 
-class gen_cfg(NoOptionsCommand):
+class GenerateConfig(NoOptionsCommand):
     description = "生成配置."
 
     def run(self):
@@ -53,6 +53,13 @@ setup(
     include_package_data=True,
     cmdclass={
         'd2u': D2U,
-        'gen_cfg': gen_cfg
+        'gen_cfg': GenerateConfig
     },
+    install_requires=[
+        "passlib",
+        "flask-cors",
+        "flask",
+        "flask-migrate",
+        "python-dotenv"
+    ]
 )

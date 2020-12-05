@@ -4,7 +4,5 @@ bp = Blueprint('home', __name__, url_prefix='/')
 
 
 def init_app(app):
-    from . import (
-        index
-    )
+    from template_server.route import index
     app.register_blueprint(bp)
